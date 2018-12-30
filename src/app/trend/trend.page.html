@@ -12,7 +12,7 @@
   <ion-content>
     <ion-list>
 
-      <ion-item *ngFor="let track of musicData?.track">
+      <ion-item *ngFor="let track of musicData?.track" (click)="goToMusicItem(track)">
         <ion-avatar slot="start">
           <ion-img [src]="track.image[0].urlText"></ion-img>
         </ion-avatar>

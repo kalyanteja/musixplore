@@ -31,4 +31,9 @@ export class TrendPage implements OnInit {
     });
   }
 
+  goToMusicItem(track){
+    this.lastFmService.currentTrack = track;
+    this.router.navigate(['/music']);
+  }
+
 }

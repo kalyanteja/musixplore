@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="trendRoute"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{currentTrack.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+  <ion-content>
+      <ion-card>
+          <ion-img [src]="currentTrack.image[3].urlText"></ion-img>
+          <ion-card-header>
+              <ion-card-title>{{currentTrack.name}}</ion-card-title>
+              <ion-card-subtitle><small>by </small> {{currentTrack.artist.name}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            This song has been played more than {{currentTrack.playcount }} times world wide,
+            by over {{ currentTrack.listeners }} listeners.
+          </ion-card-content>
+      </ion-card>
+  </ion-content>
+  
+  <ion-card>
+    <ion-item href="{{currentTrack.url}}">
+      <ion-icon name="play" slot="start"></ion-icon>
+      <ion-label>Play song..</ion-label>
+    </ion-item>
+  
+    <ion-item href="{{currentTrack.artist.url}}">
+      <ion-icon name="microphone" slot="start"></ion-icon>
+      <ion-label>Go to {{currentTrack.artist.name}}'s page</ion-label>
+    </ion-item>
+  </ion-card>
+  

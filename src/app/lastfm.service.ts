@@ -9,7 +9,7 @@ const LASTFM_KEY = environment.LASTFM_API_KEY;
   providedIn: 'root'
 })
 export class LastfmService {
-
+  currentTrack: any;
   constructor(private http: HttpClient) { }
 
   getTopTrendingMusic(){
