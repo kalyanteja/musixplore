@@ -14,7 +14,7 @@
 
       <ion-item *ngFor="let track of musicData?.track" (click)="goToMusicItem(track)">
         <ion-avatar slot="start">
-          <ion-img [src]="track.image[0].urlText"></ion-img>
+          <ion-img title="{{track.artist.name}}" [src]="track.image[0].urlText"></ion-img>
         </ion-avatar>
         <ion-label>
           <h2>{{track.name}}</h2>

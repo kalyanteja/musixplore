@@ -19,4 +19,10 @@ export class AuthService {
       throw "Please enter valid credentials!"
     }
   }
+
+  logout(){
+    // remove current user and set as null
+    // mocking logout behavior.
+    this.currentUser = null;
+  }
 }
