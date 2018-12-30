@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Musixplore - Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p *ngIf="loginFailed">
+    <ion-text color="danger">
+      <h4 >Please enter valid credentials!</h4>
+    </ion-text>
+  </p>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="Login()">Log in</ion-button>
+  
+
+</ion-content>
