@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
-  }
+  },
+  { path: 'trend', loadChildren: './trend/trend.module#TrendPageModule' }
 ];
 
 @NgModule({
