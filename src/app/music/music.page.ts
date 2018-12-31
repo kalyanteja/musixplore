@@ -23,5 +23,4 @@ export class MusicPage implements OnInit {
 
     this.currentTrack = this.lastFmService.currentTrack;
   }
-
 }

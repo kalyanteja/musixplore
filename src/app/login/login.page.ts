@@ -27,7 +27,6 @@ export class LoginPage implements OnInit {
   }
 
   Login(){
-    console.log(this.username + '...' + this.password);
     try {
       if (this.username != null && this.password != null){
         const username = this.username.trim();

@@ -13,7 +13,6 @@ export class LastfmService {
   constructor(private http: HttpClient) { }
 
   getTopTrendingMusic(){
-    console.log('calling last fm...')
     return this.http.get(`${LASTFM_URL}${LASTFM_KEY}`);
   }
 }

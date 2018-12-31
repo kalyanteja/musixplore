@@ -47,7 +47,6 @@ export class AppComponent {
   }
 
   logoutClicked(){
-    console.log("logout clicked..");
     this.authService.logout();
     this.router.navigate(['/login']);
   }
