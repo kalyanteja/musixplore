@@ -63,7 +63,7 @@ export class TrendPage implements OnInit {
 
   addToPlaylist(track){
     console.log(track);
-    this.dataService.put(track.mbid, track);
+    this.dataService.put(track);
   }
 
 }

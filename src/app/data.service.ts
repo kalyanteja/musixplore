@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { rand } from '@jsweb/randkey'
 import PouchDB from 'pouchdb';
 
 @Injectable({
@@ -26,11 +27,12 @@ export class DataService {
     return this.db.get(id);
   }
 
-  public put(id: string, document: any) {
-    console.log('insert document ' + id);
-    
-    document._id = id;
-    return this.get(id).then(result => {
+  public put(document: any) {
+    const docId = rand(16);
+    document._id = docId;
+    console.log('insert document ' + docId);
+
+    return this.get(docId).then(result => {
         document._rev = result._rev;
         console.log("in error zero");
         return this.db.put(document);
