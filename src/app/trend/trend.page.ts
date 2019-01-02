@@ -66,4 +66,8 @@ export class TrendPage implements OnInit {
     this.dataService.put(track);
   }
 
+  goToUrl(url){
+    window.open(url);
+  }
+
 }

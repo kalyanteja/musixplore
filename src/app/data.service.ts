@@ -23,6 +23,10 @@ export class DataService {
     return this.db.allDocs({include_docs: true});
   }
 
+  public delete(docId: string, docRev: string){
+    return this.db.remove(docId, docRev);
+  }
+
   public get(id: string) {
     return this.db.get(id);
   }

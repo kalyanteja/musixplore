@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  public addedTracks: Array<{ title: string; note: string; icon: string }> = [];
+  public addedTracks: Array<{ title: string; note: string; icon: string; docId: string; docRev: string; }> = [];
   
   constructor(private dataService: DataService) {
     this.dataService.fetch().then(result => {
@@ -17,7 +17,9 @@ export class ListPage implements OnInit {
         this.addedTracks.push({
           title: doc.name,
           note: `by ${doc.artist.name}`,
-          icon: doc.image[0].urlText
+          icon: doc.image[0].urlText,
+          docId: doc._id,
+          docRev: doc._rev
         });
       }
     }, error => {
@@ -26,5 +28,10 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  deleteTrack(docId, docRev){
+    this.dataService.delete(docId, docRev);
+    this.addedTracks = this.addedTracks.filter(t => t.docId !== docId);
   }
 }
