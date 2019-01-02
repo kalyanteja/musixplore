@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-list',
@@ -7,33 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  public addedTracks: Array<{ title: string; note: string; icon: string }> = [];
+  
+  constructor(private dataService: DataService) {
+    this.dataService.fetch().then(result => {
+      for (let i = 0; i < result.rows.length; i++) {
+        const doc = result.rows[i].doc;
+        this.addedTracks.push({
+          title: doc.name,
+          note: `by ${doc.artist.name}`,
+          icon: doc.image[0].urlText
+        });
+      }
+    }, error => {
+      console.error(error);
+    });
   }
 
   ngOnInit() {
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }

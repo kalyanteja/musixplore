@@ -20,6 +20,7 @@
           <h2>{{track.name}}</h2>
           <h3> <small>by </small> {{track.artist.name}}</h3>
         </ion-label>
+        <ion-icon slot="end" color="medium" name="add" (click)="addToPlaylist(track)"></ion-icon>
       </ion-item>
 
     </ion-list>

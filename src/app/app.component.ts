@@ -23,7 +23,7 @@ export class AppComponent {
       icon: 'musical-notes'
     },
     {
-      title: 'Others',
+      title: 'My Playlists',
       url: '/list',
       icon: 'list'
     }

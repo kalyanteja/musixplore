@@ -4,15 +4,17 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      My Playlist
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
+    <ion-item *ngFor="let item of addedTracks">
+      <ion-avatar slot="start">
+        <ion-img title="{{item.note}}" [src]="item.icon"></ion-img>
+      </ion-avatar>
       {{item.title}}
       <div class="item-note" slot="end">
         {{item.note}}
