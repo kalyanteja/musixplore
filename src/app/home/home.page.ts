@@ -13,10 +13,12 @@ export class HomePage {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if(this.authService.currentUser){
-      this.username = this.authService.currentUser;
-    }else{
-      this.router.navigate(['/login']);
-    }
+    this.username = this.authService.currentUser;
+    // temp unmock auth
+    // if(this.authService.currentUser){
+    //   this.username = this.authService.currentUser;
+    // }else{
+    //   this.router.navigate(['/login']);
+    // }
   }
 }

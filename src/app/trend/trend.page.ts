@@ -21,9 +21,10 @@ export class TrendPage implements OnInit {
    private zone: NgZone) { }
 
   ngOnInit() {
-    if(!this.authService.currentUser){
-      this.router.navigate(['/login']);
-    }
+    //unmock auth
+    // if(!this.authService.currentUser){
+    //   this.router.navigate(['/login']);
+    // }
 
     this.dataService.sync('http://admin:admin@localhost:5984/tracks');
     this.dataService.getChangeListener().subscribe(data => {

@@ -13,9 +13,10 @@ export class MusicPage implements OnInit {
   constructor(private lastFmService: LastfmService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    if(!this.authService.currentUser){
-      this.router.navigate(['/login']);
-    }
+    // temp unmock auth
+    // if(!this.authService.currentUser){
+    //   this.router.navigate(['/login']);
+    // }
 
     if (!this.lastFmService.currentTrack){
       this.router.navigate(['/trend']);
