@@ -12,7 +12,7 @@ export class LastfmService {
   currentTrack: any;
   constructor(private http: HttpClient) { }
 
-  getTopTrendingMusic(){
-    return this.http.get(`${LASTFM_URL}${LASTFM_KEY}`);
+  getTopTrendingMusic(page: number){
+    return this.http.get(`${LASTFM_URL}${LASTFM_KEY}&page=${page}`);
   }
 }

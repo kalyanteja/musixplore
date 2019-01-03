@@ -1,6 +1,9 @@
+import { environment } from './../environments/environment';
 import { Injectable, EventEmitter } from '@angular/core';
 import { rand } from '@jsweb/randkey'
 import PouchDB from 'pouchdb';
+
+const COUCHDB_CONN = environment.COUCHDB_CONNECTION;
 
 @Injectable({
   providedIn: 'root'
@@ -55,13 +58,12 @@ export class DataService {
     });
   }
 
-  public sync(remote: string) {
+  public sync() {
       console.log('syncing changes...')
-      const remoteDatabase = new PouchDB(remote);
+      const remoteDatabase = new PouchDB(COUCHDB_CONN);
       this.db.sync(remoteDatabase, {
           live: true
       }).on('change', change => {
-          console.log('change sync...');
           console.log(change);
           this.listener.emit(change);
       }).on('error', error => {

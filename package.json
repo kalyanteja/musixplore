@@ -29,9 +29,11 @@
     "@jsweb/randkey": "^3.3.5",
     "core-js": "^2.5.4",
     "crypto": "^1.0.1",
+    "node-sass": "^4.11.0",
     "pouchdb": "^7.0.0",
     "pouchdb-browser": "^7.0.0",
     "rxjs": "^6.3.3",
+    "sass-loader": "^7.1.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

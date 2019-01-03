@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class TrendPage implements OnInit {
   tracks: Array<any>;
   musicData: any;
+  page: number = 1;
   constructor(
    private authService: AuthService,
    private router: Router,
@@ -26,7 +27,7 @@ export class TrendPage implements OnInit {
     //   this.router.navigate(['/login']);
     // }
 
-    this.dataService.sync('http://admin:admin@localhost:5984/tracks');
+    this.dataService.sync();
     this.dataService.getChangeListener().subscribe(data => {
       for (let i = 0; i < data.change.docs.length; i++) {
         this.zone.run(() => {
@@ -43,17 +44,17 @@ export class TrendPage implements OnInit {
       console.error(error);
     });
 
-    this.lastFmService.getTopTrendingMusic()
-    .pipe(map(response => (<any>response).tracks))
-    .subscribe(data => {
-      // added image url property in readable format
-      data.track.forEach(track => {
-        track.image.forEach(element => {
-          element.urlText = element['#text'];
+    this.lastFmService.getTopTrendingMusic(this.page)
+      .pipe(map(response => (<any>response).tracks))
+      .subscribe(data => {
+        // added image url property in readable format
+        data.track.forEach(track => {
+          track.image.forEach(element => {
+            element.urlText = element['#text'];
+          });
         });
+        this.musicData = data;
       });
-      this.musicData = data;
-    });
   }
 
   goToMusicItem(track){
@@ -70,4 +71,20 @@ export class TrendPage implements OnInit {
     window.open(url);
   }
 
+  loadMoreMusicTrends(scrollEvent){
+    this.page++;
+    this.lastFmService.getTopTrendingMusic(this.page)
+      .pipe(map(response => (<any>response).tracks))
+      .subscribe(data => {
+        // added image url property in readable format
+        data.track.forEach(track => {
+          track.image.forEach(element => {
+            element.urlText = element['#text'];
+          });
+          this.musicData.track.push(track);
+        });
+      });
+      //complete the infinite scroll event
+    scrollEvent.target.complete();
+  }
 }
