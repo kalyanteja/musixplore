@@ -28,21 +28,6 @@ export class TrendPage implements OnInit {
     // }
 
     this.dataService.sync();
-    this.dataService.getChangeListener().subscribe(data => {
-      for (let i = 0; i < data.change.docs.length; i++) {
-        this.zone.run(() => {
-          this.tracks.push(data.change.docs[i]);
-        });
-      }
-    });
-    this.dataService.fetch().then(result => {
-      this.tracks = [];
-      for (let i = 0; i < result.rows.length; i++) {
-        this.tracks.push(result.rows[i].doc);
-      }
-    }, error => {
-      console.error(error);
-    });
 
     this.lastFmService.getTopTrendingMusic(this.page)
       .pipe(map(response => (<any>response).tracks))
