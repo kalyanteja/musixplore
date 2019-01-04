@@ -12,7 +12,9 @@ export class LastfmService {
   currentTrack: any;
   constructor(private http: HttpClient) { }
 
-  getTopTrendingMusic(page: number){
-    return this.http.get(`${LASTFM_URL}${LASTFM_KEY}&page=${page}`);
+  getTopTrendingMusic(page: number, tag: string = undefined){
+    const tagAppender = tag ? `&tag=${tag}` : ''
+    const queryUrl = `${LASTFM_URL}${LASTFM_KEY}&page=${page}${tagAppender}`;
+    return this.http.get(queryUrl);
   }
 }

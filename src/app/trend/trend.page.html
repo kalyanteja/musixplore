@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="dark">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -9,13 +9,16 @@
     </ion-toolbar>
   </ion-header>
   
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search by genres: Folk, Pop..." (search)="getTopMusicByTag($event)"></ion-searchbar>
+  </ion-toolbar>
   <ion-content>
     <ion-list>
       <ion-item *ngFor="let track of musicData?.track">
         <ion-avatar class="ionlabel" slot="start" title="{{track.artist.name}}'s page" (click)="goToUrl(track.artist.url)">
           <ion-img title="{{track.artist.name}}" [src]="track.image[0].urlText"></ion-img>
         </ion-avatar>
-        <ion-label color="darkgray" class="ionlabel wrap" (click)="goToMusicItem(track)">
+        <ion-label color="calm" class="ionlabel wrap" (click)="goToMusicItem(track)">
           <h2>{{track.name}}</h2>
           <h3> <small>by </small> {{track.artist.name}}</h3>
         </ion-label>

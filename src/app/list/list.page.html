@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -15,11 +15,11 @@
       <ion-avatar slot="start">
         <ion-img title="{{item.note}}" [src]="item.icon"></ion-img>
       </ion-avatar>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-      <ion-icon slot="end" color="medium" name="trash" (click)="deleteTrack(item.docId, item.docRev)"></ion-icon>
+      <ion-label>
+        <h3>{{item.title}}</h3>
+        <p>{{item.note}}</p>
+      </ion-label>
+      <ion-icon slot="end" color="medium" name="trash" (click)="deleteTrack(item)"></ion-icon>
     </ion-item>
   </ion-list>
   <!--
